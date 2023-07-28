@@ -13,6 +13,7 @@ import CreatePodcast from "./pages/CreatePodcast";
 import Podcasts from "./pages/Podcasts";
 import PodcastDetails from "./pages/PodcastDetails";
 import CreateAnEpisode from "./pages/CreateAnEpisode";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,7 +48,8 @@ function App() {
       <Toaster />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SignUp />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-a-podcast" element={<CreatePodcast />} />

@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import classes from "./Input.module.css";
 
 const FileInput = ({ accept, id, fileHandlerFunc, text, imgName }) => {
-  const [file, setFile] = useState();
+  console.log(imgName);
+  const [file, setFile] = useState(null);
   const onChange = (e) => {
-    console.log(e.target.files);
-    setFile(e.target.files);
-    fileHandlerFunc(e.target.files[0]);
+    if (e.target.files && e.target.files.length > 0) {
+      console.log(e.target.files);
+      setFile(e.target.files);
+      fileHandlerFunc(e.target.files[0]);
+    }
   };
   useEffect(() => {
     setFile(null);

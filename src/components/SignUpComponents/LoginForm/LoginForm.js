@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../../slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +29,6 @@ const LoginForm = () => {
           password
         );
         const user = userCredential.user;
-        console.log("user", user);
 
         //Saving user's details
         const userDoc = await getDoc(doc(db, "users", user.uid));
@@ -41,6 +41,7 @@ const LoginForm = () => {
             name: userData.name,
             email: user.email,
             uid: user.uid,
+            profilePic: userData.profilePic,
           })
         );
         toast.success("Login Successful");
@@ -55,6 +56,21 @@ const LoginForm = () => {
       toast.error("Make sure email and passoword are not empty");
     }
   };
+
+  const forgetPassword = () => {
+    sendPasswordResetEmail(auth, "akkikandpal2@gmail.com")
+      .then(() => {
+        // Password reset email sent!
+        toast.success("check your mail and rest your passoword");
+        // ..
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
+
   return (
     <>
       <h1>Log in</h1>
@@ -77,6 +93,9 @@ const LoginForm = () => {
         onClick={handleLogin}
         disabled={loading}
       />
+      <p className="forget-password" onClick={forgetPassword}>
+        Forget Password? Click here to reset.
+      </p>
     </>
   );
 };

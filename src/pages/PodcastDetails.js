@@ -21,6 +21,8 @@ const PodcastDetails = () => {
   const [podcast, setPodcast] = useState({});
   const [episodes, setEpisodes] = useState([]);
   const [playingFile, setPlayingFile] = useState();
+  const [creatorName, setCreatorName] = useState("");
+
   console.log(id);
   useEffect(() => {
     if (id) {
@@ -45,6 +47,39 @@ const PodcastDetails = () => {
       }
     } catch (e) {
       toast.error(e.message);
+    }
+  };
+
+  useEffect(() => {
+    if (podcast.createdBy) {
+      getUserDisplayName(podcast.createdBy);
+    }
+  }, [podcast]);
+
+  //taking out the name of the creator
+  const getUserDisplayName = async (userId) => {
+    try {
+      if (!userId) {
+        console.log("User ID is empty.");
+        return null;
+      }
+
+      const userDocRef = doc(db, "users", userId);
+
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const userName = userData.name;
+        console.log("userName", userName);
+        setCreatorName(userName);
+        return userName;
+      } else {
+        console.log("User document not found.");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      return null;
     }
   };
 
@@ -80,6 +115,7 @@ const PodcastDetails = () => {
               }}
             >
               <h1 className="podcast-title-heading">{podcast.title}</h1>
+              <span>{creatorName}</span>
               {podcast.createdBy === auth.currentUser.uid && (
                 <Button
                   style={{ width: "200px" }}
