@@ -114,7 +114,10 @@ const AudioPlayer = ({ audioSrc, image }) => {
           className={classes["duration-range"]}
         />
         <p>-{formatTime(duration - currentTime)}</p>
-        <p className={classes["audio-btn"]} onClick={toggleMute}>
+        <p
+          className={`${classes["audio-btn"]} ${classes["volume-btn"]}`}
+          onClick={toggleMute}
+        >
           {!isMute ? <FaVolumeUp /> : <FaVolumeMute />}
         </p>
         <input
