@@ -53,7 +53,11 @@ const Profile = () => {
             marginBottom: "2rem",
           }}
         >
-          <PodcastCard title={user.name} displayImage={user.profilePic} />
+          {/* <PodcastCard title={user.name} displayImage={user.profilePic} /> */}
+          <div className="podcast-card">
+            <img className="display-image-podcast" src={user.profilePic} />
+            <p className="title-podcast">{user.name}</p>
+          </div>
         </div>
         <h1 style={{ marginBottom: "2rem" }}>My Podcasts</h1>
         <div className="podcast-flex">
