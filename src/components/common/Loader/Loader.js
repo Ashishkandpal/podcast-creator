@@ -1,12 +1,15 @@
 import React from "react";
-import classes from "./Loader.module.css";
+// import classes from "./Loader.module.css";
 
+// const Loader = () => {
+//   return (
+//     <div className={classes["wrapper"]}>
+//       <span className={classes["loadersss"]}>Loading...</span>
+//     </div>
+//   );
+// };
 const Loader = () => {
-  return (
-    <div className={classes["wrapper"]}>
-      <span className={classes["loader"]}></span>
-    </div>
-  );
+  return <div> Loading....</div>;
 };
 
 export default Loader;

@@ -114,8 +114,11 @@ const PodcastDetails = () => {
                 width: "100%",
               }}
             >
-              <h1 className="podcast-title-heading">{podcast.title}</h1>
-              <span>{creatorName}</span>
+              <h1 className="podcast-title-heading">
+                {podcast.title}{" "}
+                <span style={{ fontSize: "0.8rem" }}>by {creatorName}</span>
+              </h1>
+
               {podcast.createdBy === auth.currentUser.uid && (
                 <Button
                   style={{ width: "200px" }}

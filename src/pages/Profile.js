@@ -69,14 +69,6 @@ const Profile = () => {
                   displayImage={podcast.displayImage}
                 />
               ))}
-              {podcasts.map((podcast) => (
-                <PodcastCard
-                  key={podcast.id}
-                  id={podcast.id}
-                  title={podcast.title}
-                  displayImage={podcast.displayImage}
-                />
-              ))}
             </>
           )}
         </div>
