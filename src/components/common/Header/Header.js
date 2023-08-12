@@ -16,8 +16,6 @@ const Header = () => {
   const [user, loading, error] = useAuthState(auth);
   const dispatch = useDispatch();
 
-  console.log(currentPath);
-
   useEffect(() => {
     // This effect will run once after the component mounts
     if (user) {

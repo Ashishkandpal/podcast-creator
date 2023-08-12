@@ -18,6 +18,7 @@ import PodcastCard from "../components/common/Podcasts/PodcastsCard/PodcastCard"
 const Profile = () => {
   const user = useSelector((state) => state.user.user);
   const [podcasts, setPodcasts] = useState([]);
+  let userProPic = '';
   useEffect(() => {
     const fetchDocs = async () => {
       const q = query(
@@ -33,6 +34,10 @@ const Profile = () => {
     };
     if (user) {
       fetchDocs();
+      if (user.profilePic) {
+        localStorage.setItem('user', JSON.stringify(user));
+      }
+      console.log(user.profilePic);
     }
   }, [user]);
 
@@ -40,6 +45,9 @@ const Profile = () => {
   if (!user) {
     return <Loader />;
   }
+
+  userProPic = JSON.parse(localStorage.getItem('user')).profilePic;
+  console.log(userProPic);
 
   return (
     <div>
@@ -55,7 +63,7 @@ const Profile = () => {
         >
           {/* <PodcastCard title={user.name} displayImage={user.profilePic} /> */}
           <div className="podcast-card">
-            <img className="display-image-podcast" src={user.profilePic} />
+            <img className="display-image-podcast" src={userProPic} />
             <p className="title-podcast">{user.name}</p>
           </div>
         </div>
