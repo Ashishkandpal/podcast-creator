@@ -58,7 +58,6 @@ function App() {
 
   return (
     <div className="App">
-      <div id="cursor" />
       <Toaster />
       <BrowserRouter>
         <Routes>
