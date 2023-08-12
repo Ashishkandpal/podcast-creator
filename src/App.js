@@ -43,8 +43,22 @@ function App() {
     });
     return () => unsubscribeAuth();
   }, []);
+
+  // let cursor;
+  // useEffect(() => {
+  //   cursor = document.getElementById("cursor");
+
+  //   document.body.addEventListener("mousemove", function (e) {
+  //     return (
+  //       (cursor.style.left = e.clientX + "px"),
+  //       (cursor.style.top = e.clientY + "px")
+  //     );
+  //   });
+  // }, []);
+
   return (
     <div className="App">
+      <div id="cursor" />
       <Toaster />
       <BrowserRouter>
         <Routes>

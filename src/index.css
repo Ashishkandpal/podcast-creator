@@ -226,3 +226,15 @@ a {
   color: var(--white);
   text-decoration: none !important;
 }
+
+.app {
+  position: relative;
+}
+
+#cursor {
+  position: absolute;
+  background-color: orange;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
