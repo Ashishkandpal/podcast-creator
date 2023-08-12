@@ -44,6 +44,12 @@ const Header = () => {
     <div className={classes.navbar}>
       <div className={classes.gradient} />
       <div className={classes.links}>
+        <Link
+          to="/"
+          className={currentPath === "/" ? classes.active : ""}
+        >
+          Home
+        </Link>
         {userFlag ? (
           <Link
             to="#"
