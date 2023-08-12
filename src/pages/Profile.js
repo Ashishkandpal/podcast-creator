@@ -46,7 +46,7 @@ const Profile = () => {
     return <Loader />;
   }
 
-  userProPic = JSON.parse(localStorage.getItem('user')).profilePic;
+  userProPic = localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).profilePic;
   console.log(userProPic);
 
   return (
