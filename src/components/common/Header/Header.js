@@ -33,6 +33,7 @@ const Header = () => {
         dispatch(clearUser());
         // setUserFlag(false);
         toast.success("Logged out Successfully");
+        localStorage.clear();
       })
       .catch((error) => {
         //An error happened
